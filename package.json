@@ -7,7 +7,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test:ui": "npx playwright test",
-    "ui-mode": "npx playwright test --ui"
+    "ui-mode": "npx playwright test --ui",
+    "report": "npx playwright show-report"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +16,8 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.27.0",
-    "@playwright/test": "^1.51.1",
+    "@faker-js/faker": "^9.8.0",
+    "@playwright/test": "^1.52.0",
     "@types/lodash": "^4.17.17",
     "@types/node": "^22.14.1",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
