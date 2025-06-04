@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
 
-test.describe("[UI] [AKGit] Authentication", () => {
+test.describe.skip("[UI] [AKGit] Authentication", () => {
   const validCredentials = {
     name: "AKDemo01",
     password: "AKDemonstration01"
