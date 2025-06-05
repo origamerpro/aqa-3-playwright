@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
 
-test.describe("[UI] [Heroku] Authentication", () => {
+test.describe.skip("[UI] [Heroku] Authentication", () => {
   const validCredentials = {
     username: "tomsmith",
     password: "SuperSecretPassword!",

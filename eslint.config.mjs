@@ -2,6 +2,7 @@ import js from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import { defineConfig } from "eslint/config";
+import { result } from "lodash";
 
 
 export default defineConfig([
@@ -9,6 +10,6 @@ export default defineConfig([
   { files: [".src/**/*.{js,mjs,cjs,ts,mts,cts}"], languageOptions: { globals: globals.browser } },
   tseslint.configs.recommended,
   {
-    ignores: ["dist","node_modules","eslint.config.mjs"],
+    ignores: ["dist","node_modules","eslint.config.mjs","tests-examples","playwright.config.ts", "playwright-report", "test-results"],
   },
 ]);

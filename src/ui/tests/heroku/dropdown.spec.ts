@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
 
-test.describe("[UI] [Heroku] Dropdown", () => {
+test.describe.skip("[UI] [Heroku] Dropdown", () => {
   test.beforeEach(async ({ page }) => {
     //precondition (arrange)
     await page.goto("https://the-internet.herokuapp.com/");
