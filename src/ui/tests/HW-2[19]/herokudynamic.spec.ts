@@ -9,26 +9,24 @@ test.describe("[UI] [Heroku] Dynamic Controls", () => {
     await dynamiccontrolsLink.click();
   })
   test("Dynamic Controls page test", async ({ page }) => {
-    //act
-    await page.waitForLoadState('domcontentloaded');
-    await expect(page.getByRole('button', { name: 'Remove' })).toBeVisible();
-    const header = page.getByRole('heading', { name: 'Dynamic Controls' }).innerText();
-    expect(await header).toBe('Dynamic Controls');
-    await page.getByRole('checkbox').check();
-    //assert
-    await page.getByRole('button', { name: 'Remove' }).click();
-    await page.waitForFunction(() => {
-      const checkbox = document.querySelector('[type="checkbox"]');
-      const button = document.querySelector('[onclick="swapCheckbox()"]')?.textContent;
-      const message = document.querySelector('#message')?.textContent;
-      return !checkbox && button ==='Add' && message === 'It\'s gone!';
-    }, { timeout: 5000 });
-    await page.getByRole('button', { name: 'Add' }).click();
-    await page.waitForFunction(() => {
-      const checkbox = document.querySelector('[type="checkbox"]');
-      const button = document.querySelector('[onclick="swapCheckbox()"]')?.textContent;
-      const message = document.querySelector('#message')?.textContent;
-      return checkbox && button ==='Remove' && message === 'It\'s back!';
-    }, { timeout: 5000 });
+    const removeButton = page.getByRole('button', { name: 'Remove' });
+    const addButton = page.getByRole('button', { name: 'Add' });
+    const checkbox = page.locator('input[type="checkbox"]');
+    const message = page.locator('#message');
+    const heading = page.getByRole('heading', { name: 'Dynamic Controls' });
+
+    await expect(removeButton).toBeVisible();
+    await expect(heading).toHaveText('Dynamic Controls');
+
+    // Remove
+    await checkbox.check();
+    await removeButton.click();
+    await expect(message).toHaveText("It's gone!");
+    await expect(checkbox).toBeHidden();
+
+    // Add
+    await addButton.click();
+    await expect(message).toHaveText("It's back!");
+    await expect(checkbox).toBeVisible();
   })
 });
